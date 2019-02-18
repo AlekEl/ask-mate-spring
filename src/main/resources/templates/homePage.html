@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -15,10 +16,10 @@
         <td>Details</td>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-        <td>Questions2222</td>
-        <td>Details22222</td>
+    <tbody >
+    <tr th:each="question:${questions}">
+        <td th:text="${question.getAuthor()}"></td>
+        <td th:text="${question.getDescription()}"></td>
     </tr>
     </tbody>
 </table>

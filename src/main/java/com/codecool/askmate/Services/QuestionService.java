@@ -5,20 +5,22 @@ import com.codecool.askmate.Repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 @Service
-public class questionService {
+public class QuestionService {
 
     private QuestionRepository questions;
 
     @Autowired
-    public questionService(QuestionRepository questions) {
+    public QuestionService(QuestionRepository questions) {
         this.questions = questions;
     }
 
 
-    public Map<Integer, Question> getAllQuetions(){
+    public Collection<Question> getAllQuetions(){
         return questions.getAllQuestions();
     }
 }
