@@ -6,43 +6,35 @@ import com.codecool.askmate.Repositories.QuestionRepository;
 import java.util.Date;
 
 public class Question {
-    private String title;
+    private String description;
     private String author;
-<<<<<<< HEAD
-    private String question;
-=======
     private String shortDescription;
     private Integer id;
     private Date date;
 
->>>>>>> e80a5056e0760e763e1af058176b09e45515b1aa
 
     public Date getDate() {
         return date;
     }
+    public Question(){
 
-<<<<<<< HEAD
-    public Question(String title, String author, String question) {
-        this.title = title;
-        this.author = author;
-        this.question = question;
-=======
-    public Question(String description, String author, String shortDescription, int id) {
+    };
+
+    public Question(String description, String author, String shortDescription,Integer id) {
         this.description = description;
         this.author = author;
         this.shortDescription = shortDescription;
         this.date = new Date();
         this.id = id;
->>>>>>> e80a5056e0760e763e1af058176b09e45515b1aa
 
     }
 
     public String getDescription() {
-        return title;
+        return description;
     }
 
     public void setDescription(String description) {
-        this.title = description;
+        this.description = description;
     }
 
     public String getAuthor() {
@@ -54,11 +46,11 @@ public class Question {
     }
 
     public String getShortDescription() {
-        return question;
+        return shortDescription;
     }
 
     public void setShortDescription(String shortDescription) {
-        this.question = shortDescription;
+        this.shortDescription = shortDescription;
     }
 
     public Integer getId() {

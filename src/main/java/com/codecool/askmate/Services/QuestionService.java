@@ -23,6 +23,9 @@ public class QuestionService {
         return questions.getQuestionByID(0);
     }
 
+    public void addQuestion(Question question){
+        questions.addQuestion(question);
+    }
 
     public Collection<Question> getAllQuetions(){
         return questions.getAllQuestions();

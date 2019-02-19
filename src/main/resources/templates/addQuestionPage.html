@@ -14,12 +14,12 @@
 </head>
 <body>
 <h1>ADD QUESTION</h1>
-<form action="/save-question" modelAttribute="Question" method="post">
+<form action="/add-question" modelAttribute="Question" method="post">
     <label for="title">Title of your question:</label><br>
-        <textarea path="title" id="title" name="title" rows="2" cols="30"></textarea><br>
+        <textarea path="shortDescription" id="title" name="title" rows="2" cols="30"></textarea><br>
     <br>
     <label for="question">Question:</label><br>
-        <textarea path="question" id="question" name="question" rows="10" cols="30"></textarea>
+        <textarea path="description" id="question" name="question" rows="10" cols="30"></textarea>
     <br><br>
 
     <input type="submit" value="Submit">
