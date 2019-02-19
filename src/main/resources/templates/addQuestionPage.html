@@ -8,22 +8,28 @@
     <title>Homepage</title>
     <style>
         body {
-            max-width: 300px;
+            max-width: 900px;
             margin: auto;
         }
     </style>
 </head>
 <body>
-<h1>ADD QUESTION</h1>
-<form th:object="${question}" th:action="@{/add-question}" method="post">
-    <label for="title">Title of your question:</label><br>
-    <textarea id="title" name="title" th:field="${question.shortDescription}" rows="2" cols="30"></textarea><br>
-    <br>
-    <label for="question">Question:</label><br>
-    <textarea id="question" name="question" th:field="${question.description}" rows="10" cols="30"></textarea>
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
+<h1 class="h-25 font-weight-lighter" align="left">AskMate</h1>
+<div class="border border-secondary">
+    <form th:object="${question}" th:action="@{/add-question}" method="post">
+        <div class="form-group" align="center">
+            <label for="title">Title of your question:</label><br>
+            <textarea  id="title" name="title" th:field="${question.shortDescription}" rows="5"
+                   cols="20"></textarea><br>
+            <br>
+            <label for="question">Question:</label><br>
+            <textarea id="question" name="question" th:field="${question.description}" rows="7"
+                   cols="40"></textarea>
+            <br><br>
+        </div>
+        <button class="btn btn-secondary" type="submit" value="Submit">Add</button>
+    </form>
+</div></br>
 <a href="/">Back</a>
 </body>
 </html>
