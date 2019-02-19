@@ -36,4 +36,10 @@ public class HomeController {
         return "question";
 
     }
+
+    @RequestMapping("/deleteQuestion")
+    public String deleteQuestion(@RequestParam Integer id) {
+        questionService.deleteQuestionById(id);
+        return "redirect:/";
+    }
 }

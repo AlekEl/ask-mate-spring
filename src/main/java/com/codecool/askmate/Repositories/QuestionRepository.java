@@ -15,9 +15,9 @@ public class QuestionRepository {
 
     public QuestionRepository() {
 
-        questions.put(1, new Question("I have git problem", "Adam", "Git problem", generateId()));
-        questions.put(2, new Question("I have js problem", "Daniel", "JS problem", generateId()));
-        questions.put(3, new Question("I have java problem", "Maciek", "Java problem", generateId()));
+        questions.put(generateId(), new Question("I have git problem", "Adam", "Git problem", generateId()));
+        questions.put(generateId(), new Question("I have js problem", "Daniel", "JS problem", generateId()));
+        questions.put(generateId(), new Question("I have java problem", "Maciek", "Java problem", generateId()));
 
     }
 
@@ -26,6 +26,7 @@ public class QuestionRepository {
     }
 
     public void removeQuestion(Integer questionID) {
+        questions.remove(questionID);
 
     }
 

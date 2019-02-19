@@ -31,4 +31,9 @@ public class QuestionService {
     public Question getQuestionByID(Integer id){
         return questions.getQuestionByID(id);
     }
+
+    public void deleteQuestionById(Integer id) {
+        questions.removeQuestion(id);
+    }
+
 }
