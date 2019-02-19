@@ -1,14 +1,13 @@
 package com.codecool.askmate.Model;
 
 
-
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class Question {
+
     private String description;
     private String author;
-    @Size(min = 10, max = 20)
     private String shortDescription;
     private Integer id;
     private Date date;
@@ -18,13 +17,17 @@ public class Question {
         return date;
     }
 
-    public Question(String description, String author, String shortDescription, int id) {
+    public Question() {
+        this.date = new Date();
+    }
+
+
+    public Question(String description, String author, String shortDescription, Integer id) {
         this.description = description;
         this.author = author;
         this.shortDescription = shortDescription;
         this.date = new Date();
         this.id = id;
-
     }
 
     public String getDescription() {

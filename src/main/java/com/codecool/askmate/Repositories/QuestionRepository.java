@@ -10,8 +10,8 @@ import java.util.Map;
 @Repository
 public class QuestionRepository {
 
-
     private Map<Integer, Question> questions = new HashMap<>();
+
 
     public QuestionRepository() {
 
@@ -22,7 +22,9 @@ public class QuestionRepository {
     }
 
     public void addQuestion(Question question) {
-
+        Integer id = generateId();
+        question.setId(id);
+        questions.put(id, question);
     }
 
     public void removeQuestion(Integer questionID) {
@@ -30,7 +32,9 @@ public class QuestionRepository {
 
     }
 
-    public void editQuestion(Integer questionID) {
+    public void editQuestion(Integer questionID, Question question) {
+        questions.get(questionID).setDescription(question.getDescription());
+        questions.get(questionID).setShortDescription(question.getShortDescription());
 
     }
 
@@ -42,8 +46,8 @@ public class QuestionRepository {
         return questions.get(questionID);
     }
 
-    private int generateId() {
-        int id = 1;
+    private Integer generateId() {
+        Integer id = 1;
 
         if (questions != null) {
             for (Integer questionId : questions.keySet()) {

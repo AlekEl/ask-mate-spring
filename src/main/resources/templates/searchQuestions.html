@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Homepage</title>
+</head>
+<body>
+<div>
+<table class="table table-striped ">
+    <thead class="table-dark">
+    <tr align="center">
+        <td>Questions</td>
+        <td>Details</td>
+        <td>Delete Question</td>
+        <td>Edit Question</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center" th:each="searchQuestion:${searchQuestions}">
+        <td th:text="${searchQuestion.shortDescription}"></td>
+        <td><a th:href="${'question?id='+searchQuestion.id}">view</a></td>
+        <td>
+            <form th:action="@{'/deleteQuestion?id='}" th:method="GET">
+                <input type="hidden" name="id" th:value="${searchQuestion.id}">
+                <button type="submit" class="btn btn-secondary">Delete</button>
+            </form>
+        </td>
+        <td>
+            <form th:action="@{'/editQuestion'}" th:method="GET">
+                <input type="hidden" name="id" th:value="${searchQuestion.id}">
+                <button type="submit" class="btn btn-secondary">Edit</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">Back</a>
+</div>
+</body>
+</html>

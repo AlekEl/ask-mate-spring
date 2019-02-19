@@ -5,9 +5,7 @@ import com.codecool.askmate.Repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class QuestionService {
@@ -19,15 +17,16 @@ public class QuestionService {
         this.questions = questions;
     }
 
-    public Question getQuetionByID(){
-        return questions.getQuestionByID(0);
+
+    public void addQuestion(Question question) {
+        questions.addQuestion(question);
     }
 
-    public Collection<Question> getAllQuetions(){
+    public Collection<Question> getAllQuetions() {
         return questions.getAllQuestions();
     }
 
-    public Question getQuestionByID(Integer id){
+    public Question getQuestionByID(Integer id) {
         return questions.getQuestionByID(id);
     }
 
@@ -35,4 +34,17 @@ public class QuestionService {
         questions.removeQuestion(id);
     }
 
+    public void editQuestion(Integer id, Question question) {
+        questions.editQuestion(id, question);
+    }
+
+    public List<Question> searchWord(String word){
+        List<Question> searchWords = new ArrayList<>();
+        for (Question question: questions.getAllQuestions()) {
+            if(question.getDescription().contains(word) || question.getShortDescription().contains(word)){
+                searchWords.add(question);
+            }
+        }
+        return searchWords;
+    }
 }

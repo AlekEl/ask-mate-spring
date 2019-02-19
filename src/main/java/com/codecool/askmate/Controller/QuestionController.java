@@ -1,43 +1,56 @@
 package com.codecool.askmate.Controller;
 
 
+import com.codecool.askmate.Model.FormView;
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
-public class HomeController {
+public class QuestionController {
 
-    private final
-    QuestionService questionService;
+    private QuestionService questionService;
 
     @Autowired
-    public HomeController(QuestionService questionService) {
+    public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
     }
 
     @RequestMapping(value = "/add-question")
-    public String addQuestion() {
+    public String addQuestion(Model model) {
+        model.addAttribute("question", new Question());
         return "addQuestionPage";
+    }
+
+    @PostMapping(value = "/add-question")
+    public String saveQuestion(@ModelAttribute("question") Question question) {
+        questionService.addQuestion(question);
+        return "redirect:/";
     }
 
     @RequestMapping("/")
     public String showHomePage(Model model) {
         Collection<Question> questions = questionService.getAllQuetions();
         model.addAttribute("questions", questions);
+        model.addAttribute("word", new FormView());
         return "homePage";
+    }
+
+    @PostMapping(value = "/search")
+    public String searchWord(@ModelAttribute("word") FormView searchWord, Model model) {
+        List<Question> searchQuestion = questionService.searchWord(searchWord.getText());
+        model.addAttribute("searchQuestions", searchQuestion);
+        return "searchQuestions";
     }
 
     @RequestMapping("/question")
@@ -56,20 +69,14 @@ public class HomeController {
 
     @RequestMapping("/editQuestion")
     public String editQuestion(@RequestParam("id") Integer id, Model model) {
-        System.out.println(id);
         Question question = questionService.getQuestionByID(id);
         model.addAttribute("question", question);
         return "editQuestion";
     }
 
-    @RequestMapping(value="/editQuestion", method = RequestMethod.POST)
-    public String editQuestionPUT(@Valid @RequestParam("id") Integer id, @ModelAttribute("question")Question question,
-                                  BindingResult result, ModelMap model) {
-        System.out.println(id);
-        if(result.hasErrors()) {
-            return "error";
-        }
-
+    @RequestMapping(value = "/editQuestion", method = RequestMethod.POST)
+    public String editQuestionPUT(@RequestParam("id") Integer id, @ModelAttribute("question") Question question) {
+        questionService.editQuestion(id, question);
         return "redirect:/";
     }
 }
