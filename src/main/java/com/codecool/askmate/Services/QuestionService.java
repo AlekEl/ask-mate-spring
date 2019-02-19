@@ -19,6 +19,9 @@ public class QuestionService {
         this.questions = questions;
     }
 
+    public Question getQuetionByID(){
+        return questions.getQuestionByID(0);
+    }
 
     public Collection<Question> getAllQuetions(){
         return questions.getAllQuestions();
