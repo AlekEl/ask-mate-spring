@@ -1,19 +1,39 @@
 package com.codecool.askmate.Model;
 
 
-import java.util.Date;
+import com.codecool.askmate.Repositories.QuestionRepository;
 
+import java.util.Date;
 
 public class Question {
     private String title;
     private String author;
+<<<<<<< HEAD
     private String question;
+=======
+    private String shortDescription;
+    private Integer id;
+    private Date date;
 
+>>>>>>> e80a5056e0760e763e1af058176b09e45515b1aa
 
+    public Date getDate() {
+        return date;
+    }
+
+<<<<<<< HEAD
     public Question(String title, String author, String question) {
         this.title = title;
         this.author = author;
         this.question = question;
+=======
+    public Question(String description, String author, String shortDescription, int id) {
+        this.description = description;
+        this.author = author;
+        this.shortDescription = shortDescription;
+        this.date = new Date();
+        this.id = id;
+>>>>>>> e80a5056e0760e763e1af058176b09e45515b1aa
 
     }
 
@@ -41,7 +61,13 @@ public class Question {
         this.question = shortDescription;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
 }

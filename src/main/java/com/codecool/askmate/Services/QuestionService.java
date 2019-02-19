@@ -23,7 +23,17 @@ public class QuestionService {
         return questions.getQuestionByID(0);
     }
 
+
     public Collection<Question> getAllQuetions(){
         return questions.getAllQuestions();
     }
+
+    public Question getQuestionByID(Integer id){
+        return questions.getQuestionByID(id);
+    }
+
+    public void deleteQuestionById(Integer id) {
+        questions.removeQuestion(id);
+    }
+
 }

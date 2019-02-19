@@ -14,19 +14,14 @@
     <tr>
         <td>Questions</td>
         <td>Details</td>
-        <td>Delete Question</td>
+        <td>Date</td>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="question:${questions}">
-        <td th:text="${question.shortDescription}"></td>
-        <td><a th:href="${'question?id='+question.id}">view</a></td>
-        <td>
-            <form th:action="@{'/deleteQuestion?id='}" th:method="GET">
-                <input type="hidden" name="id" th:value="${question.id}">
-                <button type="submit" class="btn-danger">Delete</button>
-            </form>
-        </td>
+    <tr>
+        <td th:text="${question.description}"></td>
+        <td th:text="${question.author}">></td>
+        <td th:text="${question.date}">></td>
     </tr>
     </tbody>
 </table>
