@@ -17,7 +17,7 @@ public class Question {
         return date;
     }
     public Question(){
-
+        this.date = new Date();
     };
 
     public Question(String description, String author, String shortDescription,Integer id) {

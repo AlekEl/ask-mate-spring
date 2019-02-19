@@ -27,8 +27,9 @@ public class HomeController {
     }
 
     @PostMapping(value = "/add-question")
-    public String saveQuestion(@ModelAttribute("Question") Question question) {
+    public String saveQuestion(@ModelAttribute("question") Question question) {
         System.out.println(question.getDescription());
+        System.out.println(question.getShortDescription());
         questionService.addQuestion(question);
         return "redirect:/";
     }
