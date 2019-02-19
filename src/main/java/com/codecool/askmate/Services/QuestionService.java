@@ -23,7 +23,6 @@ public class QuestionService {
         return questions.getQuestionByID(0);
     }
 
-
     public Collection<Question> getAllQuetions(){
         return questions.getAllQuestions();
     }

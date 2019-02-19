@@ -11,7 +11,7 @@ import java.util.Map;
 public class QuestionRepository {
 
 
-    Map<Integer, Question> questions = new HashMap<>();
+    private Map<Integer, Question> questions = new HashMap<>();
 
     public QuestionRepository() {
 
@@ -45,12 +45,11 @@ public class QuestionRepository {
     private int generateId() {
         int id = 1;
 
-        if(questions != null) {
-            for(Integer questionId : questions.keySet()) {
-                if(questionId >= id) id = questionId + 1;
+        if (questions != null) {
+            for (Integer questionId : questions.keySet()) {
+                if (questionId >= id) id = questionId + 1;
             }
         }
-
         return id;
     }
 }

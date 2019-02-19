@@ -1,7 +1,6 @@
 package com.codecool.askmate.Model;
 
 
-import com.codecool.askmate.Repositories.QuestionRepository;
 
 import java.util.Date;
 
