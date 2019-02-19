@@ -2,11 +2,13 @@ package com.codecool.askmate.Model;
 
 
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class Question {
     private String description;
     private String author;
+    @Size(min = 10, max = 20)
     private String shortDescription;
     private Integer id;
     private Date date;
