@@ -20,7 +20,12 @@ public class QuestionService {
     }
 
 
+
     public Collection<Question> getAllQuetions(){
         return questions.getAllQuestions();
+    }
+
+    public Question getQuestionByID(Integer id){
+        return questions.getQuestionByID(id);
     }
 }

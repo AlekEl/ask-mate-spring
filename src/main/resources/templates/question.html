@@ -14,12 +14,14 @@
     <tr>
         <td>Questions</td>
         <td>Details</td>
+        <td>Date</td>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="question:${questions}">
-        <td th:text="${question.shortDescription}"></td>
-        <td><a th:href="${'question?id='+question.id}">view</a></td>
+    <tr>
+        <td th:text="${question.description}"></td>
+        <td th:text="${question.author}">></td>
+        <td th:text="${question.date}">></td>
     </tr>
     </tbody>
 </table>

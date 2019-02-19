@@ -3,17 +3,24 @@ package com.codecool.askmate.Model;
 
 import java.util.Date;
 
-
 public class Question {
     private String description;
     private String author;
     private String shortDescription;
+    private Integer id;
+    private Date date;
 
 
-    public Question(String description, String author, String shortDescription) {
+    public Date getDate() {
+        return date;
+    }
+
+    public Question(String description, String author, String shortDescription, Integer id) {
         this.description = description;
         this.author = author;
         this.shortDescription = shortDescription;
+        this.id = id;
+        this.date = new Date();
 
     }
 
@@ -41,7 +48,13 @@ public class Question {
         this.shortDescription = shortDescription;
     }
 
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
 
 }
