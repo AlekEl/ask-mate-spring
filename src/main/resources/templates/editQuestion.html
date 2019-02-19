@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Homepage</title>
+</head>
+<body>
+<h1>Edit question</h1>
+    <form action="#" th:action="${'/editQuestion?id='+question.id}" th:method="POST">
+        <input type="hidden" name="id" th:value="${question.id}">
+        <label for="description">Description: </label><input id="description" name="description" type="text" th:value="${question.description}"/>
+        <label for="short-description">Short Description: </label><input id="short-description" name="short-description" type="text" th:value="${question.shortDescription}"/>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
