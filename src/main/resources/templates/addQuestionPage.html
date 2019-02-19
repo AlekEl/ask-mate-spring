@@ -5,22 +5,24 @@
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Homepage</title>
+    <style>
+        body {
+            max-width: 300px;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-<h1>HOMEPAGE OF QUESTIONES</h1>
-<table class="table">
-    <thead>
-    <tr>
-        <td>Questions</td>
-        <td>Details</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Questions2222</td>
-        <td>Details22222</td>
-    </tr>
-    </tbody>
-</table>
+<h1>ADD QUESTION</h1>
+<form action="/add-question">
+    <label for="title">Title of your question:</label><br>
+    <textarea id="title" name="title" rows="2" cols="30"></textarea><br>
+    <br>
+    <label for="question">Question:</label><br>
+        <textarea id="question" name="question" rows="10" cols="30"></textarea>
+    <br><br>
+
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>
