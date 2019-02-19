@@ -5,24 +5,24 @@ import java.util.Date;
 
 
 public class Question {
-    private String description;
+    private String title;
     private String author;
-    private String shortDescription;
+    private String question;
 
 
-    public Question(String description, String author, String shortDescription) {
-        this.description = description;
+    public Question(String title, String author, String question) {
+        this.title = title;
         this.author = author;
-        this.shortDescription = shortDescription;
+        this.question = question;
 
     }
 
     public String getDescription() {
-        return description;
+        return title;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.title = description;
     }
 
     public String getAuthor() {
@@ -34,11 +34,11 @@ public class Question {
     }
 
     public String getShortDescription() {
-        return shortDescription;
+        return question;
     }
 
     public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+        this.question = shortDescription;
     }
 
 
