@@ -1,6 +1,8 @@
 package com.codecool.askmate.Model;
 
 
+import com.codecool.askmate.Repositories.QuestionRepository;
+
 import java.util.Date;
 
 public class Question {
@@ -15,12 +17,12 @@ public class Question {
         return date;
     }
 
-    public Question(String description, String author, String shortDescription, Integer id) {
+    public Question(String description, String author, String shortDescription, int id) {
         this.description = description;
         this.author = author;
         this.shortDescription = shortDescription;
-        this.id = id;
         this.date = new Date();
+        this.id = id;
 
     }
 
