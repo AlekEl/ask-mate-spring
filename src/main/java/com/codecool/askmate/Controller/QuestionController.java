@@ -1,8 +1,10 @@
 package com.codecool.askmate.Controller;
 
 
+import com.codecool.askmate.Model.Answer;
 import com.codecool.askmate.Model.FormView;
 import com.codecool.askmate.Model.Question;
+import com.codecool.askmate.Services.AnswerService;
 import com.codecool.askmate.Services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +21,14 @@ import java.util.List;
 @Controller
 public class QuestionController {
 
+    private AnswerService answerService;
     private QuestionService questionService;
 
+
     @Autowired
-    public QuestionController(QuestionService questionService) {
+    public QuestionController(QuestionService questionService, AnswerService answerService) {
         this.questionService = questionService;
+        this.answerService = answerService;
     }
 
     @RequestMapping(value = "/add-question")
@@ -39,7 +44,7 @@ public class QuestionController {
     }
 
     @RequestMapping("/")
-    public String showHomePage(Model model) {
+    public String showAllQuestion(Model model) {
         Collection<Question> questions = questionService.getAllQuetions();
         model.addAttribute("questions", questions);
         model.addAttribute("word", new FormView());
@@ -57,9 +62,10 @@ public class QuestionController {
     @RequestMapping("/question")
     public String questionDetails(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
+        List<Answer> answers= answerService.getAllAnswersByQuestionID(id);
         model.addAttribute("question", question);
+        model.addAttribute("answers",answers);
         return "question";
-
     }
 
     @RequestMapping("/deleteQuestion")

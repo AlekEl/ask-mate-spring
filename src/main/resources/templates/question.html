@@ -37,6 +37,22 @@
             <td class="col-lg-3" th:text="${question.date}">></td>
         </tr>
         </tbody>
+    </table></br>
+    <table style="opacity: inherit; margin: 0 auto" class="table table-striped">
+        <thead class="table-dark">
+        <tr align="center" class="d-flex">
+            <td class="col-lg-8">Answers</td>
+            <td class="col-lg-1">Details</td>
+            <td class="col-lg-3">Date</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" class="d-flex" th:each="answer:${answers}">
+            <td class="col-lg-8" th:text="${answer.text}"></td>
+            <td class="col-lg-1" th:text="${answer.author}">></td>
+            <td class="col-lg-3" th:text="${answer.date}">></td>
+        </tr>
+        </tbody>
     </table>
 </div>
 </body>
