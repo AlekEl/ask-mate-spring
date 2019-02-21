@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>Homepage</title>
+    <style>
+        body {
+            max-width: 900px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<h1 class="h-25 font-weight-lighter" align="left">AskMate</h1>
+<div class="border border-secondary">
+    <form th:object="${answer}" th:action="@{/addAnswer}" method="post">
+        <input type="hidden" name="id" th:value="${question.id}">
+        <div class="form-group" align="center">
+
+            <label for="title">Title of your question:</label><br>
+            <textarea id="title" name="title" th:field="${answer.text}" rows="5" cols="20"></textarea><br>
+            <button class="btn btn-secondary" type="submit" value="Submit">Add</button>
+        </div>
+    </form>
+</div>
+<a th:href="${'/question?id='+question.id}">Back</a>
+</body>
+</html>

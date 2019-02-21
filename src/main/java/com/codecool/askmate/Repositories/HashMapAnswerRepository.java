@@ -15,14 +15,16 @@ public class HashMapAnswerRepository implements AnswerRepository {
     public HashMapAnswerRepository() {
 
         answers.put(generateId(), new Answer("test", "Marian", generateId(), 1));
+        answers.put(generateId(), new Answer("test2", "Maria", generateId(), 1));
         answers.put(generateId(), new Answer("dfdfd", "Zbychu", generateId(), 2));
         answers.put(generateId(), new Answer("sdsdsd", "Zosia", generateId(), 3));
     }
 
     @Override
-    public void addAnswer(Answer answer) {
+    public void addAnswer(Answer answer, Integer questionID) {
         Integer id = generateId();
         answer.setId(id);
+        answer.setQuestionId(questionID);
         answers.put(id, answer);
     }
 
@@ -43,6 +45,11 @@ public class HashMapAnswerRepository implements AnswerRepository {
             if(answer.getQuestionId().equals(questionID)) answerList.add(answer);
         }
         return answerList;
+    }
+
+    @Override
+    public Answer getAnswerById(Integer id) {
+        return answers.get(id);
     }
 
     private Integer generateId() {

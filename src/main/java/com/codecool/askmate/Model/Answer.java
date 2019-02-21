@@ -1,6 +1,8 @@
 package com.codecool.askmate.Model;
 
 
+import org.springframework.context.annotation.Primary;
+
 import java.util.Date;
 
 public class Answer {
@@ -25,8 +27,8 @@ public class Answer {
         this.text = text;
         this.author = author;
         this.id = id;
-        this.questionId = questionId;
         this.date = new Date();
+        this.questionId = questionId;
     }
 
 

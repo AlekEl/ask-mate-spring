@@ -21,8 +21,8 @@ public class AnswerService {
         this.answers = answers;
     }
 
-    public void addAnswer(Answer answer) {
-        answers.addAnswer(answer);
+    public void addAnswer(Answer answer, Integer questionID) {
+        answers.addAnswer(answer,questionID);
     }
 
     public List<Answer> getAllAnswersByQuestionID(Integer id) {
@@ -35,5 +35,9 @@ public class AnswerService {
 
     public void editAnswer(Integer id, Answer answer) {
         answers.editAnswer(id, answer);
+    }
+
+    public Answer getAnswerById(Integer id) {
+        return answers.getAnswerById(id);
     }
 }
