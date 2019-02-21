@@ -2,6 +2,7 @@ package com.codecool.askmate.Services;
 
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Repositories.HashMapQuestionRepository;
+import com.codecool.askmate.Repositories.RepositoriesInterface.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,10 @@ import java.util.*;
 @Service
 public class QuestionService {
 
-    private HashMapQuestionRepository questions;
+    private QuestionRepository questions;
 
     @Autowired
-    public QuestionService(HashMapQuestionRepository questions) {
+    public QuestionService(QuestionRepository questions) {
         this.questions = questions;
     }
 
