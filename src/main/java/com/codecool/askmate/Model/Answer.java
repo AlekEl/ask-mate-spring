@@ -1,8 +1,6 @@
 package com.codecool.askmate.Model;
 
 
-import org.springframework.context.annotation.Primary;
-
 import java.util.Date;
 
 public class Answer {

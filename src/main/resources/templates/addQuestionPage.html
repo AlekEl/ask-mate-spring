@@ -19,17 +19,17 @@
     <form th:object="${question}" th:action="@{/add-question}" method="post">
         <div class="form-group" align="center">
             <label for="title">Title of your question:</label><br>
-            <textarea  id="title" name="title" th:field="${question.shortDescription}" rows="5"
-                   cols="20"></textarea><br>
+            <textarea id="title" name="title" th:field="${question.shortDescription}" rows="5"
+                      cols="20"></textarea><br>
             <br>
             <label for="question">Question:</label><br>
             <textarea id="question" name="question" th:field="${question.description}" rows="7"
-                   cols="40"></textarea>
+                      cols="40"></textarea>
             <br><br>
         </div>
         <button class="btn btn-secondary" type="submit" value="Submit">Add</button>
     </form>
-</div></br>
+</div>
 <a href="/">Back</a>
 </body>
 </html>

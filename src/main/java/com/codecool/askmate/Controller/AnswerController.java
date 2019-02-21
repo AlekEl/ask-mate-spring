@@ -15,45 +15,45 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class AnswerController {
 
-   private AnswerService answerService;
-   private QuestionService questionService;
+    private AnswerService answerService;
+    private QuestionService questionService;
 
     @Autowired
-    public AnswerController(AnswerService answerService,QuestionService questionService) {
+    public AnswerController(AnswerService answerService, QuestionService questionService) {
         this.answerService = answerService;
         this.questionService = questionService;
     }
 
     @RequestMapping("/deleteAnswer")
-    public String deleteAnswer(@RequestParam("id") Integer id,@RequestParam("questionId") Integer questionId){
+    public String deleteAnswer(@RequestParam("id") Integer id, @RequestParam("questionId") Integer questionId) {
         answerService.deleteAnswerById(id);
         return "redirect:/question?id=" + questionId;
     }
 
     @RequestMapping("/editAnswer")
-    public String editAnswer(@RequestParam("id") Integer id, Model model){
+    public String editAnswer(@RequestParam("id") Integer id, Model model) {
         Answer answer = answerService.getAnswerById(id);
         model.addAttribute("answer", answer);
         return "editAnswer";
     }
 
-    @RequestMapping(value = "/editAnswer",method = RequestMethod.POST)
-    public String editAnswer(@RequestParam("id") Integer id, @RequestParam("questionId") Integer questionId, @ModelAttribute Answer answer){
+    @RequestMapping(value = "/editAnswer", method = RequestMethod.POST)
+    public String editAnswer(@RequestParam("id") Integer id, @RequestParam("questionId") Integer questionId, @ModelAttribute Answer answer) {
         answerService.editAnswer(id, answer);
-        System.out.println(id);
         return "redirect:/question?id=" + questionId;
     }
 
     @RequestMapping("/addAnswer")
-    public String addAnswer(Model model, @RequestParam("id") Integer id){
-        model.addAttribute("question", questionService.getQuestionByID(id));
+    public String addAnswer(Model model, @RequestParam("id") Integer id) {
+        Question question = questionService.getQuestionByID(id);
+        model.addAttribute("question", question);
         model.addAttribute("answer", new Answer());
         return "addAnswer";
     }
 
     @RequestMapping(value = "/addAnswer", method = RequestMethod.POST)
-    public String addAnswer(@ModelAttribute("answer") Answer answer, @RequestParam("id") Integer id){
-        answerService.addAnswer(answer,id);
+    public String addAnswer(@ModelAttribute("answer") Answer answer, @RequestParam("id") Integer id) {
+        answerService.addAnswer(answer, id);
         return "redirect:/question?id=" + id;
 
     }

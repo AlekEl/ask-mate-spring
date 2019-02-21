@@ -1,14 +1,10 @@
 package com.codecool.askmate.Services;
 
 import com.codecool.askmate.Model.Answer;
-import com.codecool.askmate.Model.Question;
-import com.codecool.askmate.Repositories.HashMapQuestionRepository;
 import com.codecool.askmate.Repositories.RepositoriesInterface.AnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -22,7 +18,7 @@ public class AnswerService {
     }
 
     public void addAnswer(Answer answer, Integer questionID) {
-        answers.addAnswer(answer,questionID);
+        answers.addAnswer(answer, questionID);
     }
 
     public List<Answer> getAllAnswersByQuestionID(Integer id) {

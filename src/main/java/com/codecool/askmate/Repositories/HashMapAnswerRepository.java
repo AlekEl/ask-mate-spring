@@ -11,7 +11,6 @@ public class HashMapAnswerRepository implements AnswerRepository {
 
     private Map<Integer, Answer> answers = new HashMap<>();
 
-
     public HashMapAnswerRepository() {
 
         answers.put(generateId(), new Answer("test", "Marian", generateId(), 1));
@@ -41,8 +40,10 @@ public class HashMapAnswerRepository implements AnswerRepository {
     @Override
     public List<Answer> getAllAnswersByQuestionID(Integer questionID) {
         List<Answer> answerList = new ArrayList<>();
-        for(Answer answer : answers.values()) {
-            if(answer.getQuestionId().equals(questionID)) answerList.add(answer);
+        for (Answer answer : answers.values()) {
+            if (answer.getQuestionId().equals(questionID)) {
+                answerList.add(answer);
+            }
         }
         return answerList;
     }
