@@ -50,6 +50,7 @@ public class QuestionController {
     public String searchWord(@ModelAttribute("word") FormView searchWord, Model model) {
         List<Question> searchQuestion = questionService.searchWord(searchWord.getText());
         model.addAttribute("searchQuestions", searchQuestion);
+        model.addAttribute("searchWord", searchWord);
         return "searchQuestions";
     }
 

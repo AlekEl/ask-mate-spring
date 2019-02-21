@@ -20,7 +20,6 @@
     <title>Homepage</title>
 </head>
 <body class="bg">
-
 <h1 style="font-size: 80px" class="font-weight-lighter">AskMate</h1>
 <nav class="navbar navbar-expand-lg navbar-light ">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -44,27 +43,27 @@
         </form>
     </div>
 </nav>
-<div class="container-fluid" style="background:white; max-width: 1400px; padding: 0; margin-top: 20px">
+<div class="container-fluid" style="background:white; max-width: 1300px; padding: 0; margin-top: 20px">
     <table style="opacity: inherit; margin: 0 auto" class="table table-striped">
         <thead class="table-dark">
-        <tr align="center">
-            <td>Questions</td>
-            <td>Details</td>
-            <td>Delete Question</td>
-            <td>Edit Question</td>
+        <tr align="center" class="d-flex">
+            <td class="col-lg-9">Questions</td>
+            <td class="col-1">Details</td>
+            <td class="col-1">Delete Question</td>
+            <td class="col-1">Edit Question</td>
         </tr>
         </thead>
         <tbody>
-        <tr align="center" th:each="question:${questions}">
-            <td th:text="${question.shortDescription}"></td>
-            <td><a th:href="${'question?id='+question.id}">view</a></td>
-            <td>
+        <tr align="center" th:each="question:${questions}" class="d-flex">
+            <td class="col-lg-9" th:text="${question.shortDescription}"></td>
+            <td class="col-1"><a th:href="${'question?id='+question.id}">view</a></td>
+            <td class="col-1">
                 <form th:action="@{'/deleteQuestion?id='}" th:method="GET">
                     <input type="hidden" name="id" th:value="${question.id}">
                     <button type="submit" class="btn btn-secondary">Delete</button>
                 </form>
             </td>
-            <td>
+            <td class="col-1">
                 <form th:action="@{'/editQuestion'}" th:method="GET">
                     <input type="hidden" name="id" th:value="${question.id}">
                     <button type="submit" class="btn btn-secondary">Edit</button>
@@ -73,6 +72,7 @@
         </tr>
         </tbody>
     </table>
+
 </div>
 <a href="/add-question">Add question</a>
 </body>

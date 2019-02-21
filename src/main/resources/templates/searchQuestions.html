@@ -5,39 +5,52 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <title>Homepage</title>
+    <style>
+        .bg {
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+    <title>Search word</title>
 </head>
-<body>
+<body class="bg">
+<h2 th:text="'Search word: '+${searchWord.text}"></h2>
 <div>
-<table class="table table-striped ">
-    <thead class="table-dark">
-    <tr align="center">
-        <td>Questions</td>
-        <td>Details</td>
-        <td>Delete Question</td>
-        <td>Edit Question</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr align="center" th:each="searchQuestion:${searchQuestions}">
-        <td th:text="${searchQuestion.shortDescription}"></td>
-        <td><a th:href="${'question?id='+searchQuestion.id}">view</a></td>
-        <td>
-            <form th:action="@{'/deleteQuestion?id='}" th:method="GET">
-                <input type="hidden" name="id" th:value="${searchQuestion.id}">
-                <button type="submit" class="btn btn-secondary">Delete</button>
-            </form>
-        </td>
-        <td>
-            <form th:action="@{'/editQuestion'}" th:method="GET">
-                <input type="hidden" name="id" th:value="${searchQuestion.id}">
-                <button type="submit" class="btn btn-secondary">Edit</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<a href="/">Back</a>
+    <table class="table table-striped ">
+        <thead class="table-dark">
+        <tr align="center">
+            <td>Questions</td>
+            <td>Details</td>
+            <td>Delete Question</td>
+            <td>Edit Question</td>
+        </tr>
+        </thead>
+        <tbody style="background: white">
+        <tr align="center" th:each="searchQuestion:${searchQuestions}">
+            <td th:text="${searchQuestion.shortDescription}"></td>
+            <td><a th:href="${'question?id='+searchQuestion.id}">view</a></td>
+            <td>
+                <form th:action="@{'/deleteQuestion?id='}" th:method="GET">
+                    <input type="hidden" name="id" th:value="${searchQuestion.id}">
+                    <button type="submit" class="btn btn-secondary">Delete</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{'/editQuestion'}" th:method="GET">
+                    <input type="hidden" name="id" th:value="${searchQuestion.id}">
+                    <button type="submit" class="btn btn-secondary">Edit</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/">Back</a>
 </div>
 </body>
 </html>

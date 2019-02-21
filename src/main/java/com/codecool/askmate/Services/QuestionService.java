@@ -38,10 +38,10 @@ public class QuestionService {
         questions.editQuestion(id, question);
     }
 
-    public List<Question> searchWord(String word){
+    public List<Question> searchWord(String word) {
         List<Question> searchWords = new ArrayList<>();
-        for (Question question: questions.getAllQuestions()) {
-            if(question.getDescription().contains(word) || question.getShortDescription().contains(word)){
+        for (Question question : questions.getAllQuestions()) {
+            if (question.getDescription().contains(word) || question.getShortDescription().contains(word)) {
                 searchWords.add(question);
             }
         }
