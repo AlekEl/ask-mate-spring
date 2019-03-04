@@ -1,0 +1,27 @@
+.border-secondary {
+    max-width: 600px;
+    margin: auto;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+
+.border-secondary h3 {
+    color: white;
+}
+
+label {
+    margin:  20px 0px 10px 0px;
+}
+.btn-outline-light {
+    margin-top: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.add h1{
+    padding: 15px 0px 15px 0px;
+    color: white;
+    margin: 0px;
+    max-width: 600px;
+    margin: auto;
+    background-color:rgba(0, 0, 0, 0.7);
+}

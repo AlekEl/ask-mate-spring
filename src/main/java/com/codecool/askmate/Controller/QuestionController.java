@@ -29,6 +29,7 @@ public class QuestionController {
     @RequestMapping(value = "/add-question")
     public String addQuestion(Model model) {
         model.addAttribute("question", new Question());
+        model.addAttribute("word", new FormView());
         return "addQuestionPage";
     }
 
@@ -58,6 +59,7 @@ public class QuestionController {
     public String questionDetails(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
         model.addAttribute("question", question);
+        model.addAttribute("word", new FormView());
         return "question";
 
     }
@@ -72,6 +74,7 @@ public class QuestionController {
     public String editQuestion(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
         model.addAttribute("question", question);
+        model.addAttribute("word", new FormView());
         return "editQuestion";
     }
 

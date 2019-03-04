@@ -5,18 +5,46 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/editQuestion.css">
     <title>Homepage</title>
 </head>
-<body>
-<h1>Edit question</h1>
-<form action="#" th:action="${'/editQuestion?id='+question.id}" th:method="POST">
-    <input type="hidden" name="id" th:value="${question.id}">
-    <label for="description">Description: </label>
-    <input id="description" name="description" type="text" th:field="${question.description}"/>
-    <label for="short-description">Short Description: </label>
-    <input id="short-description" name="short-description" type="text" th:field="${question.shortDescription}"/>
-    <button type="submit">Submit</button>
-</form>
+<body class="bg">
+<nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/"><h1 style="font-size: 80px" class="font-weight-lighter">AskMate</h1></a>
+            </li>
+
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0" th:action="@{'/search'}" th:object="${word}" th:method="POST">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" th:field="${word.text}"
+                   aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="edit" align="center">
+    <h1>Edit question</h1>
+</div>
+<div class="border border-secondary">
+    <form action="#" th:action="${'/editQuestion?id='+question.id}" th:method="POST">
+        <div class="form-group" align="center">
+            <input type="hidden" name="id" th:value="${question.id}">
+            <label for="title"><h3>Title of your question:</h3></label><br>
+            <textarea  id="title" name="title" th:field="${question.shortDescription}" rows="2"
+                       cols="40"></textarea><br>
+            <label for="question"><h3>Question:</h3></label><br>
+            <textarea id="question" name="question" th:field="${question.description}" rows="7"
+                      cols="40"></textarea><br>
+            <button class="btn btn-outline-light" type="submit" value="Submit">Edit</button>
+        </div>
+
+    </form>
+</div></br>
+
 </body>
 <a href="/">Back</a>
 </html>
