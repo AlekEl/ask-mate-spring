@@ -9,8 +9,6 @@
     <style>
         .bg {
             height: 100%;
-
-            /* Center and scale the image nicely */
             background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(11).jpg");
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -55,7 +53,41 @@
         </tr>
         </tbody>
     </table>
+    <table style="opacity: inherit; margin: 0 auto" class="table table-striped">
+        <thead class="table-dark">
+        <tr align="center" class="d-flex">
+            <td class="col-lg-8">Answers</td>
+            <td class="col-lg-1">Details</td>
+            <td class="col-lg-3">Date</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr align="center" class="d-flex" th:each="answer:${answers}">
+            <td class="col-lg-6" th:text="${answer.text}"></td>
+            <td class="col-lg-1" th:text="${answer.author}">></td>
+            <td class="col-lg-3" th:text="${answer.date}">></td>
+            <td class="col-lg-1">
+                <form th:action="@{'/deleteAnswer?id='}" th:method="GET">
+                    <input type="hidden" name="id" th:value="${answer.id}">
+                    <input type="hidden" name="questionId" th:value="${question.id}">
+                    <button type="submit" class="btn btn-secondary">Delete</button>
+                </form>
+            </td>
+            <td class="col-lg-1">
+                <form th:action="@{'/editAnswer'}" th:method="GET">
+                    <input type="hidden" name="id" th:value="${answer.id}">
+                    <button type="submit" class="btn btn-secondary">Edit</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-</body>
+<form th:action="@{'/addAnswer'}" th:method="GET">
+    <input type="hidden" name="id" th:value="${question.id}">
+    <button type="submit" class="btn btn-secondary">Add</button>
+</form>
 <a href="/">Back</a>
+</body>
+
 </html>

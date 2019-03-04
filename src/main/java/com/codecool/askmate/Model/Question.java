@@ -1,7 +1,5 @@
 package com.codecool.askmate.Model;
 
-
-import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class Question {

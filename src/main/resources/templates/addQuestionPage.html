@@ -35,6 +35,7 @@
 <div class="border border-secondary">
     <form th:object="${question}" th:action="@{/add-question}" method="post">
         <div class="form-group" align="center">
+
             <label for="title"><h3>Title of your question:</h3></label><br>
             <textarea  id="title" name="title" th:field="${question.shortDescription}" rows="2"
                    cols="40"></textarea><br>
@@ -42,10 +43,11 @@
             <textarea id="question" name="question" th:field="${question.description}" rows="7"
                    cols="40"></textarea><br>
             <button class="btn btn-outline-light" type="submit" value="Submit">Add</button>
+
         </div>
 
     </form>
-</div></br>
+</div>
 <a href="/">Back</a>
 </body>
 </html>
