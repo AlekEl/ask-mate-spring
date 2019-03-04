@@ -73,7 +73,7 @@ public class QuestionController {
     }
 
     @RequestMapping("/deleteQuestion")
-    public String deleteQuestion(@RequestParam Integer id) {
+    public String deleteQuestion(@RequestParam int id) {
         questionService.deleteQuestionById(id);
         return "redirect:/";
     }

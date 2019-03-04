@@ -2,20 +2,16 @@ package com.codecool.askmate.Repositories;
 
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Repositories.RepositoriesInterface.QuestionRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-@Repository
 public class HashMapQuestionRepository implements QuestionRepository {
 
     private Map<Integer, Question> questions = new HashMap<>();
 
-
     public HashMapQuestionRepository() {
-
         questions.put(generateId(), new Question("I have git problem", "Adam", "Git problem", generateId()));
         questions.put(generateId(), new Question("I have js problem", "Daniel", "JS problem", generateId()));
         questions.put(generateId(), new Question("I have java problem", "Maciek", "Java problem", generateId()));
@@ -26,6 +22,7 @@ public class HashMapQuestionRepository implements QuestionRepository {
         Integer id = generateId();
         question.setId(id);
         questions.put(id, question);
+
     }
 
     @Override
@@ -34,7 +31,7 @@ public class HashMapQuestionRepository implements QuestionRepository {
     }
 
     @Override
-    public void editQuestion(Integer questionID, Question question) {
+    public void editQuestion(int questionID, Question question) {
         questions.get(questionID).setDescription(question.getDescription());
         questions.get(questionID).setShortDescription(question.getShortDescription());
     }
@@ -45,7 +42,7 @@ public class HashMapQuestionRepository implements QuestionRepository {
     }
 
     @Override
-    public Question getQuestionByID(Integer questionID) {
+    public Question getQuestionByID(int questionID) {
         return questions.get(questionID);
     }
 

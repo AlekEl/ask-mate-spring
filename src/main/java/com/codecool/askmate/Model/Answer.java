@@ -12,10 +12,6 @@ public class Answer {
     private Date date;
 
 
-    public Date getDate() {
-        return date;
-    }
-
     public Answer() {
         this.date = new Date();
     }
@@ -28,7 +24,6 @@ public class Answer {
         this.date = new Date();
         this.questionId = questionId;
     }
-
 
     public String getText() {
         return text;
@@ -60,6 +55,10 @@ public class Answer {
 
     public void setQuestionId(Integer questionId) {
         this.questionId = questionId;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     public void setDate(Date date) {

@@ -1,15 +1,20 @@
 package com.codecool.askmate.Model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "question")
 public class Question {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String description;
     private String author;
     private String shortDescription;
-    private Integer id;
-    private Date date;
 
+    private Date date;
 
     public Date getDate() {
         return date;
@@ -20,12 +25,19 @@ public class Question {
     }
 
 
-    public Question(String description, String author, String shortDescription, Integer id) {
+    public Question(String description, String author, String shortDescription, int id) {
         this.description = description;
         this.author = author;
         this.shortDescription = shortDescription;
         this.date = new Date();
         this.id = id;
+    }
+
+    public Question(String description, String author, String shortDescription) {
+        this.description = description;
+        this.author = author;
+        this.shortDescription = shortDescription;
+        this.date = new Date();
     }
 
     public String getDescription() {

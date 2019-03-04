@@ -10,30 +10,30 @@ import java.util.List;
 @Service
 public class AnswerService {
 
-    private AnswerRepository answers;
+    private AnswerRepository answerRepository;
 
     @Autowired
     public AnswerService(AnswerRepository answers) {
-        this.answers = answers;
+        this.answerRepository = answers;
     }
 
     public void addAnswer(Answer answer, Integer questionID) {
-        answers.addAnswer(answer, questionID);
+        answerRepository.addAnswer(answer, questionID);
     }
 
     public List<Answer> getAllAnswersByQuestionID(Integer id) {
-        return answers.getAllAnswersByQuestionID(id);
+        return answerRepository.getAllAnswersByQuestionID(id);
     }
 
     public void deleteAnswerById(Integer id) {
-        answers.removeAnswer(id);
+        answerRepository.removeAnswer(id);
     }
 
     public void editAnswer(Integer id, Answer answer) {
-        answers.editAnswer(id, answer);
+        answerRepository.editAnswer(id, answer);
     }
 
     public Answer getAnswerById(Integer id) {
-        return answers.getAnswerById(id);
+        return answerRepository.getAnswerById(id);
     }
 }

@@ -15,8 +15,8 @@ public class HashMapAnswerRepository implements AnswerRepository {
 
         answers.put(generateId(), new Answer("test", "Marian", generateId(), 1));
         answers.put(generateId(), new Answer("test2", "Maria", generateId(), 1));
-        answers.put(generateId(), new Answer("dfdfd", "Zbychu", generateId(), 2));
-        answers.put(generateId(), new Answer("sdsdsd", "Zosia", generateId(), 3));
+        answers.put(generateId(), new Answer("dfdfd", "Zbychu", generateId(), 1));
+        answers.put(generateId(), new Answer("sdsdsd", "Zosia", generateId(), 1));
     }
 
     @Override
