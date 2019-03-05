@@ -1,6 +1,5 @@
 package com.codecool.askmate.Controller;
 
-
 import com.codecool.askmate.Model.Answer;
 import com.codecool.askmate.Model.FormView;
 import com.codecool.askmate.Model.Question;
@@ -9,21 +8,17 @@ import com.codecool.askmate.Services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class QuestionController {
 
     private AnswerService answerService;
     private QuestionService questionService;
-
 
     @Autowired
     public QuestionController(QuestionService questionService, AnswerService answerService) {
@@ -63,12 +58,10 @@ public class QuestionController {
     @RequestMapping("/question")
     public String questionDetails(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
-        List<Answer> answers= answerService.getAllAnswersByQuestionID(id);
+        List<Answer> answers = answerService.getAllAnswersByQuestionID(id);
         model.addAttribute("question", question);
         model.addAttribute("word", new FormView());
-
-        model.addAttribute("answers",answers);
-
+        model.addAttribute("answers", answers);
         return "question";
     }
 
@@ -81,6 +74,7 @@ public class QuestionController {
     @RequestMapping("/editQuestion")
     public String editQuestion(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
+
         model.addAttribute("question", question);
         model.addAttribute("word", new FormView());
         return "editQuestion";
@@ -89,6 +83,8 @@ public class QuestionController {
     @RequestMapping(value = "/editQuestion", method = RequestMethod.POST)
     public String editQuestionPUT(@RequestParam("id") Integer id, @ModelAttribute("question") Question question) {
         questionService.editQuestion(id, question);
+        System.out.println(question.getDescription());
+        System.out.println(question.getShortDescription());
         return "redirect:/";
     }
 }

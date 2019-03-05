@@ -2,11 +2,17 @@ package com.codecool.askmate.Repositories;
 
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Repositories.RepositoriesInterface.QuestionRepository;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 
 public class DBQuestionRepository implements QuestionRepository {
@@ -42,4 +48,5 @@ public class DBQuestionRepository implements QuestionRepository {
     public Question getQuestionByID(int questionID) {
         return em.find(Question.class, questionID);
     }
+
 }

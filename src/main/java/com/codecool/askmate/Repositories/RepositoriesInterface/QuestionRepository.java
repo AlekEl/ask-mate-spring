@@ -1,6 +1,7 @@
 package com.codecool.askmate.Repositories.RepositoriesInterface;
 
 import com.codecool.askmate.Model.Question;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Collection;
 

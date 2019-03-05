@@ -12,14 +12,14 @@ public class RepositoryConfig {
 
     @Bean(name = "HashMapQuestionRepository")
     @Profile("HashMap")
-    public QuestionRepository createHashMapQuestionRepository(){
+    public QuestionRepository createHashMapQuestionRepository() {
         QuestionRepository repository = new HashMapQuestionRepository();
         return repository;
     }
 
     @Bean(name = "DBQuestionRepository")
     @Profile("DB")
-    public QuestionRepository createDBQuestionRepository(){
+    public QuestionRepository createDBQuestionRepository() {
         QuestionRepository repository = new DBQuestionRepository();
         return repository;
     }
