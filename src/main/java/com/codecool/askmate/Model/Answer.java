@@ -13,9 +13,9 @@ public class Answer {
     private Integer id;
     private String text;
     private String author;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "questionId")
-    private Question questionId;
+    @ManyToOne(targetEntity = Question.class)
+    @JoinColumn(name = "question.id")
+    private Integer question_id;
     private Date date;
 
 
@@ -24,12 +24,12 @@ public class Answer {
     }
 
 
-    public Answer(String text, String author, Integer id, Question questionId) {
+    public Answer(String text, String author, Integer id, Integer question_id) {
         this.text = text;
         this.author = author;
         this.id = id;
         this.date = new Date();
-        this.questionId = questionId;
+        this.question_id = question_id;
     }
 
     public String getText() {
@@ -44,8 +44,8 @@ public class Answer {
         return id;
     }
 
-    public Question getQuestionId() {
-        return questionId;
+    public Integer getQuestion_id() {
+        return question_id;
     }
 
     public void setText(String text) {
@@ -60,8 +60,8 @@ public class Answer {
         this.id = id;
     }
 
-    public void setQuestionId(Question questionId) {
-        this.questionId = questionId;
+    public void setQuestion_id(Integer question_id) {
+        this.question_id = question_id;
     }
 
     public Date getDate() {

@@ -19,11 +19,11 @@ public class AnswerService {
         this.answers = answers;
     }
 
-    public void addAnswer(Answer answer, Integer questionID) {
+    public void addAnswer(Answer answer, Integer question_id) {
         answers.save(answer);
     }
 
-    public List<Answer> getAllAnswersByQuestionID(Integer id) {
+    public List<Answer> getAllAnswersByQuestion_id(Integer id) {
         Iterable<Integer> a = Collections.singleton(id);
         return answers.findAllById(a);
     }

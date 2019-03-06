@@ -58,7 +58,7 @@ public class QuestionController {
     @RequestMapping("/question")
     public String questionDetails(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
-        List<Answer> answers = answerService.getAllAnswersByQuestionID(id);
+        List<Answer> answers = answerService.getAllAnswersByQuestion_id(id);
         model.addAttribute("question", question);
         model.addAttribute("word", new FormView());
         model.addAttribute("answers", answers);

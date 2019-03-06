@@ -38,7 +38,7 @@
 //    }
 //
 //    @Override
-//    public List<Answer> getAllAnswersByQuestionID(Integer questionID) {
+//    public List<Answer> getAllAnswersByQuestion_id(Integer questionID) {
 //        List<Answer> answerList = new ArrayList<>();
 //        for (Answer answer : answers.values()) {
 //            if (answer.getQuestionId().equals(questionID)) {

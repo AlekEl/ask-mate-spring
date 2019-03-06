@@ -11,12 +11,11 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "question_id")
     private Integer id;
     private String description;
     private String author;
     private String shortDescription;
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "questionId")
-    private List<Answer> answersList;
 
     private Date date;
 
