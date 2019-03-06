@@ -1,14 +1,21 @@
 package com.codecool.askmate.Model;
 
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "Answers")
 public class Answer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
     private String text;
     private String author;
-    private Integer id;
-    private Integer questionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "questionId")
+    private Question questionId;
     private Date date;
 
 
@@ -17,7 +24,7 @@ public class Answer {
     }
 
 
-    public Answer(String text, String author, Integer id, Integer questionId) {
+    public Answer(String text, String author, Integer id, Question questionId) {
         this.text = text;
         this.author = author;
         this.id = id;
@@ -37,7 +44,7 @@ public class Answer {
         return id;
     }
 
-    public Integer getQuestionId() {
+    public Question getQuestionId() {
         return questionId;
     }
 
@@ -53,7 +60,7 @@ public class Answer {
         this.id = id;
     }
 
-    public void setQuestionId(Integer questionId) {
+    public void setQuestionId(Question questionId) {
         this.questionId = questionId;
     }
 
