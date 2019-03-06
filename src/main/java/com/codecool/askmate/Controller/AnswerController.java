@@ -47,7 +47,7 @@ public class AnswerController {
 
     @RequestMapping("/addAnswer")
     public String addAnswer(Model model, @RequestParam("id") Integer id) {
-        Question question = questionService.getQuestionByID(id);
+       Question question = questionService.getQuestionByID(id);
         model.addAttribute("question", question);
         model.addAttribute("answer", new Answer());
         return "addAnswer";

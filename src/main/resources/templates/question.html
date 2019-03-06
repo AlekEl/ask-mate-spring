@@ -26,7 +26,6 @@
                 <a class="nav-link" href="/"><h1 style="font-size: 80px" class="font-weight-lighter">AskMate</h1></a>
             </li>
 
-
         </ul>
         <form class="form-inline my-2 my-lg-0" th:action="@{'/search'}" th:object="${word}" th:method="POST">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" th:field="${word.text}"

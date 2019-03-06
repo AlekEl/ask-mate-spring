@@ -15,5 +15,5 @@ public interface QuestionRepository {
 
     Collection<Question> getAllQuestions();
 
-    Question getQuestionByID(int questionID);
+    Question getQuestionByID(Integer questionID);
 }

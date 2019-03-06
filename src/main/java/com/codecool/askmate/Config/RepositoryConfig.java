@@ -6,6 +6,7 @@ import com.codecool.askmate.Repositories.RepositoriesInterface.QuestionRepositor
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Configuration
 public class RepositoryConfig {
@@ -17,10 +18,10 @@ public class RepositoryConfig {
         return repository;
     }
 
-    @Bean(name = "DBQuestionRepository")
+    @Bean(name = "H2Db")
     @Profile("DB")
-    public QuestionRepository createDBQuestionRepository() {
-        QuestionRepository repository = new DBQuestionRepository();
+    public JpaRepository createDBQuestionRepository() {
+        JpaRepository repository = new DBQuestionRepository();
         return repository;
     }
 }

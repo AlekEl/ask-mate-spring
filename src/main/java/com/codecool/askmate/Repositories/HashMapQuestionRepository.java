@@ -2,11 +2,8 @@ package com.codecool.askmate.Repositories;
 
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Repositories.RepositoriesInterface.QuestionRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 public class HashMapQuestionRepository implements QuestionRepository {
@@ -44,7 +41,7 @@ public class HashMapQuestionRepository implements QuestionRepository {
 
 
     @Override
-    public Question getQuestionByID(int questionID) {
+    public Question getQuestionByID(Integer questionID) {
         return questions.get(questionID);
     }
 
@@ -57,4 +54,5 @@ public class HashMapQuestionRepository implements QuestionRepository {
         }
         return id;
     }
+
 }
