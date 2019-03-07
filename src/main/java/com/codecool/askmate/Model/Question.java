@@ -1,9 +1,9 @@
 package com.codecool.askmate.Model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 @Entity
 @Table(name = "question")
@@ -11,11 +11,14 @@ public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "question_id")
-    private Integer id;
+    private Integer question_id;
     private String description;
     private String author;
     private String shortDescription;
+
+
+    @OneToMany(mappedBy = "question",cascade = CascadeType.REMOVE)
+    private List<Answer> answers;
 
     private Date date;
 
@@ -33,7 +36,7 @@ public class Question {
         this.author = author;
         this.shortDescription = shortDescription;
         this.date = new Date();
-        this.id = id;
+        this.question_id = id;
     }
 
     public Question(String description, String author, String shortDescription) {
@@ -68,12 +71,18 @@ public class Question {
     }
 
     public Integer getId() {
-        return id;
+        return question_id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.question_id = id;
     }
 
+    public List<Answer> getAnswers() {
+        return answers;
+    }
 
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
 }

@@ -27,6 +27,7 @@ public class QuestionService {
     }
 
     public Collection<Question> getAllQuestions() {
+        System.out.println(postgresDb.findAll().size());
         return postgresDb.findAll();
     }
 

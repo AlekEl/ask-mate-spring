@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -58,10 +59,10 @@ public class QuestionController {
     @RequestMapping("/question")
     public String questionDetails(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
-        List<Answer> answers = answerService.getAllAnswersByQuestion_id(id);
+//        List<Answer> answers = (List<Answer>) answerService.getAllAnswersByQuestion_id(id);
         model.addAttribute("question", question);
         model.addAttribute("word", new FormView());
-        model.addAttribute("answers", answers);
+//        model.addAttribute("answers", answers);
         return "question";
     }
 

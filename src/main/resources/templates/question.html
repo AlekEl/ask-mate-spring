@@ -61,7 +61,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr align="center" class="d-flex" th:each="answers:${answer}">
+        <tr align="center" class="d-flex" th:each="answer:${question.answers}">
             <td class="col-lg-6" th:text="${answer.text}"></td>
             <td class="col-lg-1" th:text="${answer.author}">></td>
             <td class="col-lg-3" th:text="${answer.date}">></td>

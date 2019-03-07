@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Answers")
+
 public class Answer {
 
     @Id
@@ -13,10 +13,15 @@ public class Answer {
     private Integer id;
     private String text;
     private String author;
-    @ManyToOne(targetEntity = Question.class)
-    @JoinColumn(name = "question.id")
     private Integer question_id;
     private Date date;
+
+    @ManyToOne
+    @JoinColumn(name = "question_id",referencedColumnName = "question_id", insertable = false, updatable = false)
+    private Question question;
+
+
+
 
 
     public Answer() {
@@ -71,4 +76,13 @@ public class Answer {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
 }
