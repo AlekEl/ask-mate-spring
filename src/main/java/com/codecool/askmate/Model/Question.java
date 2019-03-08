@@ -7,11 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "question")
-public class Question {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer question_id;
+public class Question extends AuditionModel{
     private String description;
     private String author;
     private String shortDescription;
@@ -27,16 +23,17 @@ public class Question {
     }
 
     public Question() {
+        super();
         this.date = new Date();
     }
 
 
     public Question(String description, String author, String shortDescription, int id) {
+        super(id);
         this.description = description;
         this.author = author;
         this.shortDescription = shortDescription;
         this.date = new Date();
-        this.question_id = id;
     }
 
     public Question(String description, String author, String shortDescription) {
@@ -70,13 +67,13 @@ public class Question {
         this.shortDescription = shortDescription;
     }
 
-    public Integer getId() {
-        return question_id;
-    }
-
-    public void setId(int id) {
-        this.question_id = id;
-    }
+//    public Integer getId() {
+//        return question_id;
+//    }
+//
+//    public void setId(int id) {
+//        this.question_id = id;
+//    }
 
     public List<Answer> getAnswers() {
         return answers;

@@ -1,6 +1,5 @@
 package com.codecool.askmate.Controller;
 
-import com.codecool.askmate.Model.Answer;
 import com.codecool.askmate.Model.FormView;
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Services.AnswerService;
@@ -10,21 +9,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class QuestionController {
 
-    private AnswerService answerService;
+//    private AnswerService answerService;
     private QuestionService questionService;
 
     @Autowired
-    public QuestionController(QuestionService questionService, AnswerService answerService) {
+    public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
-        this.answerService = answerService;
+//        this.answerService = answerService;
     }
 
     @RequestMapping(value = "/add-question")
@@ -42,7 +39,9 @@ public class QuestionController {
 
     @RequestMapping("/")
     public String showAllQuestion(Model model) {
-        Collection<Question> questions = questionService.getAllQuestions();
+        List<Question> questions = questionService.getAllQuestions().stream()
+                .filter(auditionModel -> auditionModel instanceof Question)
+                .map(question -> (Question)question).collect(Collectors.toList());
         model.addAttribute("questions", questions);
         model.addAttribute("word", new FormView());
         return "homePage";
@@ -59,10 +58,8 @@ public class QuestionController {
     @RequestMapping("/question")
     public String questionDetails(@RequestParam("id") Integer id, Model model) {
         Question question = questionService.getQuestionByID(id);
-//        List<Answer> answers = (List<Answer>) answerService.getAllAnswersByQuestion_id(id);
         model.addAttribute("question", question);
         model.addAttribute("word", new FormView());
-//        model.addAttribute("answers", answers);
         return "question";
     }
 

@@ -5,23 +5,16 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+public class Answer extends AuditionModel{
 
-public class Answer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
     private String text;
     private String author;
     private Integer question_id;
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "question_id",referencedColumnName = "question_id", insertable = false, updatable = false)
+    @JoinColumn(name = "question_id",referencedColumnName = "id", insertable = false, updatable = false)
     private Question question;
-
-
-
 
 
     public Answer() {
@@ -30,9 +23,9 @@ public class Answer {
 
 
     public Answer(String text, String author, Integer id, Integer question_id) {
+        super(id);
         this.text = text;
         this.author = author;
-        this.id = id;
         this.date = new Date();
         this.question_id = question_id;
     }
@@ -45,9 +38,9 @@ public class Answer {
         return author;
     }
 
-    public Integer getId() {
-        return id;
-    }
+//    public Integer getId() {
+//        return id;
+//    }
 
     public Integer getQuestion_id() {
         return question_id;
@@ -61,9 +54,9 @@ public class Answer {
         this.author = author;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    public void setId(Integer id) {
+//        this.id = id;
+//    }
 
     public void setQuestion_id(Integer question_id) {
         this.question_id = question_id;
