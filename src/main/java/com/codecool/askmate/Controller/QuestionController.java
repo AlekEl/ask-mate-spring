@@ -21,8 +21,9 @@ public class QuestionController {
     }
 
     @PostMapping(value = "/add-question")
-    public void saveQuestion(@RequestBody Question question) {
+    public String saveQuestion(@RequestBody Question question) {
         questionService.addQuestion(question);
+        return "redirect:/";
     }
 
     @GetMapping("/")
@@ -41,17 +42,20 @@ public class QuestionController {
     }
 
     @GetMapping("/deleteQuestion")
-    public void deleteQuestion(@RequestParam int id) {
+    public String deleteQuestion(@RequestParam int id) {
         questionService.deleteQuestionById(id);
+        return "redirect:/";
     }
 
     @GetMapping("/editQuestion")
-    public Question editQuestion(@RequestParam("id") Integer id) {
-        return questionService.getQuestionByID(id);
+    public String editQuestion(@RequestParam("id") Integer id) {
+        questionService.getQuestionByID(id);
+        return "redirect:/question?id=" + id;
     }
 
     @PutMapping("/editQuestion")
-    public void editQuestionPut(@RequestParam Integer id, @RequestBody Question question) {
+    public String editQuestionPut(@RequestParam Integer id, @RequestBody Question question) {
         questionService.editQuestion(id, question);
+        return "redirect:/question?id=" + id;
     }
 }
