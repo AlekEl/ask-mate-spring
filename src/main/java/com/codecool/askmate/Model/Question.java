@@ -82,4 +82,15 @@ public class Question extends AuditionModel{
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", answers=" + answers +
+                ", date=" + date +
+                '}';
+    }
 }

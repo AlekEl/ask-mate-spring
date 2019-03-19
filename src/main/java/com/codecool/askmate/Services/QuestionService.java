@@ -43,9 +43,10 @@ public class QuestionService {
 
     @Transactional
     public void editQuestion(Integer id, Question question) {
-        Question questionToUpdate = (Question)postgresDb.getOne(id);
+        System.out.println(id);
+        System.out.println(question);
+        Question questionToUpdate = this.getQuestionByID(id);
         System.out.println(questionToUpdate);
-        System.out.println(postgresDb.getOne(id));
         questionToUpdate.setDescription(question.getDescription());
         questionToUpdate.setShortDescription(question.getShortDescription());
         postgresDb.save(questionToUpdate);
@@ -53,7 +54,7 @@ public class QuestionService {
 
     public List<Question> searchWord(String word) {
         List<Question> searchWords = new ArrayList<>();
-        List<Question> questionsList = postgresDb.findAll().stream().filter(auditionModel -> auditionModel instanceof Question).map(question -> (Question)question).collect(Collectors.toList());
+        List<Question> questionsList = postgresDb.findAll().stream().filter(auditionModel -> auditionModel instanceof Question).map(question -> (Question) question).collect(Collectors.toList());
         for (Question question : questionsList) {
             if (question.getDescription().contains(word) || question.getShortDescription().contains(word)) {
                 searchWords.add(question);

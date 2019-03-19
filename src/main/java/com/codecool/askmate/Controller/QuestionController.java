@@ -1,9 +1,11 @@
 package com.codecool.askmate.Controller;
 
+import com.codecool.askmate.Model.AuditionModel;
 import com.codecool.askmate.Model.FormView;
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Services.AnswerService;
 import com.codecool.askmate.Services.QuestionService;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 public class QuestionController {
 
 //    private AnswerService answerService;
@@ -24,65 +26,40 @@ public class QuestionController {
 //        this.answerService = answerService;
     }
 
-    @RequestMapping(value = "/add-question")
-    public String addQuestion(Model model) {
-        model.addAttribute("question", new Question());
-        model.addAttribute("word", new FormView());
-        return "addQuestionPage";
-    }
-
     @PostMapping(value = "/add-question")
-    public String saveQuestion(@ModelAttribute("question") Question question) {
+    public void saveQuestion(@RequestBody Question question) {
         questionService.addQuestion(question);
-        return "redirect:/";
     }
 
-    @RequestMapping("/")
-    public String showAllQuestion(Model model) {
-        List<Question> questions = questionService.getAllQuestions().stream()
-                .filter(auditionModel -> auditionModel instanceof Question)
-                .map(question -> (Question)question).collect(Collectors.toList());
-        model.addAttribute("questions", questions);
-        model.addAttribute("word", new FormView());
-        return "homePage";
+    @GetMapping("/")
+    public List<AuditionModel> showAllQuestion() {
+        return questionService.getAllQuestions();
     }
 
-    @PostMapping(value = "/search")
-    public String searchWord(@ModelAttribute("word") FormView searchWord, Model model) {
-        List<Question> searchQuestion = questionService.searchWord(searchWord.getText());
-        model.addAttribute("searchQuestions", searchQuestion);
-        model.addAttribute("searchWord", searchWord);
-        return "searchQuestions";
+    @GetMapping(value = "/search")
+    public List<Question> searchWord(@RequestParam("word") String word) {
+        return questionService.searchWord(word);
     }
 
-    @RequestMapping("/question")
-    public String questionDetails(@RequestParam("id") Integer id, Model model) {
-        Question question = questionService.getQuestionByID(id);
-        model.addAttribute("question", question);
-        model.addAttribute("word", new FormView());
-        return "question";
+    @GetMapping("/question")
+    public Question questionDetails(@RequestParam("id") Integer id) {
+        return questionService.getQuestionByID(id);
     }
 
-    @RequestMapping("/deleteQuestion")
-    public String deleteQuestion(@RequestParam int id) {
+    @GetMapping("/deleteQuestion")
+    public void deleteQuestion(@RequestParam int id) {
         questionService.deleteQuestionById(id);
-        return "redirect:/";
     }
 
-    @RequestMapping("/editQuestion")
-    public String editQuestion(@RequestParam("id") Integer id, Model model) {
-        Question question = questionService.getQuestionByID(id);
-
-        model.addAttribute("question", question);
-        model.addAttribute("word", new FormView());
-        return "editQuestion";
+    //TO DO
+    @GetMapping("/editQuestion")
+    public Question editQuestion(@RequestParam("id") Integer id) {
+        return questionService.getQuestionByID(id);
     }
 
-    @RequestMapping(value = "/editQuestion", method = RequestMethod.POST)
-    public String editQuestionPUT(@RequestParam("id") Integer id, @ModelAttribute("question") Question question) {
+    @PutMapping("/editQuestion")
+    public void editQuestionPut(@RequestParam Integer id, @RequestBody Question question) {
+        System.out.println(question);
         questionService.editQuestion(id, question);
-        System.out.println(question.getDescription());
-        System.out.println(question.getShortDescription());
-        return "redirect:/";
     }
 }
