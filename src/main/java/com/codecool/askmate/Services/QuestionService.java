@@ -28,8 +28,8 @@ public class QuestionService {
     }
 
     public List<AuditionModel> getAllQuestions() {
-        System.out.println(postgresDb.findAll().size());
-        return postgresDb.findAll();
+        List<AuditionModel> allQuestions = postgresDb.findAll();
+        return allQuestions;
     }
 
     public Question getQuestionByID(Integer id) {

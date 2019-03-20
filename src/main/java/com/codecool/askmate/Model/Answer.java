@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "answer")
 public class Answer extends AuditionModel{
 
     private String text;
@@ -78,4 +79,11 @@ public class Answer extends AuditionModel{
         this.question = question;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "text " + text +
+        " author " + author +
+        " date " + date +
+        " question_id " + question_id;
+    }
 }

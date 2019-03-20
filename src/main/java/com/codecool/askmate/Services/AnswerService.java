@@ -22,21 +22,20 @@ public class AnswerService {
         answer.setQuestion_id(question_id);
         answers.save(answer);
     }
+
     @Transactional
     public void deleteAnswerById(Integer id) {
         answers.odeleteAnswerWithIds(id);
     }
 
-
-
     public void editAnswer(Integer id, Answer answer) {
-        Answer answer2update = (Answer) answers.getOne(id);
+        Answer answer2update = getAnswerById(id);
         answer2update.setText(answer.getText());
         answers.save(answer2update);
-        //TODO: Remove old one
     }
 
     public Answer getAnswerById(Integer id) {
-        return (Answer) answers.getOne(id);
+        Answer answer = (Answer) answers.findById(id).orElse(null);
+        return answer;
     }
 }
