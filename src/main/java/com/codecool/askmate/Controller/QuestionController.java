@@ -21,12 +21,12 @@ public class QuestionController {
 //        this.answerService = answerService;
     }
 
-    @PostMapping(value = "/add-question")
+    @PostMapping(value = "/questions")
     public void saveQuestion(@RequestBody Question question) {
         questionService.addQuestion(question);
     }
 
-    @GetMapping("/")
+    @GetMapping("/questions")
     public List<AuditionModel> showAllQuestion() {
         return questionService.getAllQuestions();
     }
@@ -51,8 +51,9 @@ public class QuestionController {
         questionService.getQuestionByID(id);
     }
 
-    @PutMapping("/editQuestion")
-    public String editQuestionPut(@PathVariable Integer id, @RequestBody Question question) {
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("/questions/{id}")
+    public void editQuestionPut(@PathVariable Integer id, @RequestBody Question question) {
         questionService.editQuestion(id, question);
     }
 }
