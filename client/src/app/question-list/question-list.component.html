@@ -1,0 +1,27 @@
+<!--<div *ngFor="let question of questions">-->
+  <!--{{question.content}}-->
+<!--</div>-->
+<table style="opacity: inherit; margin: 0 auto; background-color: white" class="table table-striped">
+  <thead class="table-dark">
+  <tr align="center" class="d-flex">
+    <td class="col-lg-9">Questions</td>
+    <!--<td class="col-1">Details</td>-->
+    <!--<td class="col-1">Delete Question</td>-->
+    <!--<td class="col-1">Edit Question</td>-->
+  </tr>
+  </thead>
+  <tbody>
+  <tr align="center" *ngFor="let question of questions" class="d-flex">
+    <td class="col-lg-9">{{question.shortDescription}}</td>
+    <td class="col-1"><a href="#">view</a></td>
+    <td class="col-1">
+      <a class="btn btn-secondary" [routerLink]="['/question-edit', question.id]">Edit</a>
+      <!--<form>-->
+        <!--<input type="hidden" name="id">-->
+        <!--<button type="submit" class="btn btn-secondary">Edit</button>-->
+      <!--</form>-->
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button [routerLink]="['/question-add']">Add Question</button>

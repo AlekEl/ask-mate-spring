@@ -26,7 +26,8 @@ public class QuestionController {
         return "redirect:/";
     }
 
-    @GetMapping("/")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/questions")
     public List<AuditionModel> showAllQuestion() {
         return questionService.getAllQuestions();
     }
