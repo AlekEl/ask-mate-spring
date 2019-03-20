@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { QuestionListComponent } from './question-list/question-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionEditComponent } from './question-edit/question-edit.component';
+import { QuestionViewComponent } from './question-view/question-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionListComponent,
     NavbarComponent,
-    QuestionEditComponent
+    QuestionEditComponent,
+    QuestionViewComponent
   ],
   imports: [
     BrowserModule,

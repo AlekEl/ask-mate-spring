@@ -3,7 +3,6 @@ package com.codecool.askmate.Controller;
 import com.codecool.askmate.Model.Answer;
 import com.codecool.askmate.Model.AuditionModel;
 import com.codecool.askmate.Services.AnswerService;
-import com.codecool.askmate.Services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,12 +10,10 @@ import org.springframework.web.bind.annotation.*;
 public class AnswerController {
 
     private AnswerService answerService;
-    private QuestionService questionService;
 
     @Autowired
-    public AnswerController(AnswerService answerService, QuestionService questionService) {
+    public AnswerController(AnswerService answerService) {
         this.answerService = answerService;
-        this.questionService = questionService;
     }
 
     @GetMapping("/deleteAnswer")
