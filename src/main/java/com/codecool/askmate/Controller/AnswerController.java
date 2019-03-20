@@ -1,20 +1,13 @@
 package com.codecool.askmate.Controller;
 
 import com.codecool.askmate.Model.Answer;
-import com.codecool.askmate.Model.Question;
+import com.codecool.askmate.Model.AuditionModel;
 import com.codecool.askmate.Services.AnswerService;
 import com.codecool.askmate.Services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
-@Controller
+@RestController
 public class AnswerController {
 
     private AnswerService answerService;
@@ -26,39 +19,24 @@ public class AnswerController {
         this.questionService = questionService;
     }
 
-    @RequestMapping("/deleteAnswer")
-    public String deleteAnswer(@RequestParam("id") Integer id, @RequestParam("questionId") Integer questionId) {
+    @GetMapping("/deleteAnswer")
+    public void deleteAnswer(@RequestParam("id") Integer id) {
         answerService.deleteAnswerById(id);
-        return "redirect:/question?id=" + questionId;
     }
 
-    @RequestMapping("/editAnswer")
-    public String editAnswer(@RequestParam("id") Integer id, Model model) {
-        Answer answer = answerService.getAnswerById(id);
-        model.addAttribute("answer", answer);
-        return "editAnswer";
+    @PostMapping("/editAnswer")
+    public void getAnswerToEdit(@RequestParam("id") Integer answerId) {
+        AuditionModel result = answerService.getAnswerById(answerId);
+        System.out.println(result.toString());
     }
 
-    @RequestMapping(value = "/editAnswer", method = RequestMethod.POST)
-    public String editAnswer(@RequestParam("id") Integer id, @RequestParam("questionId") Integer questionId, @ModelAttribute Answer answer) {
-        answerService.editAnswer(id, answer);
-        return "redirect:/question?id=" + questionId;
+    @PutMapping("/editAnswer")
+    public void saveAnswer(@RequestParam("id") Integer answerId, @RequestBody Answer answer) {
+        answerService.editAnswer(answerId, answer);
     }
 
     @RequestMapping("/addAnswer")
-    public String addAnswer(Model model, @RequestParam("id") Integer id) {
-       Question question = questionService.getQuestionByID(id);
-        model.addAttribute("question", question);
-        model.addAttribute("answer", new Answer());
-        return "addAnswer";
+    public void addAnswer(@RequestBody Answer answer, @RequestParam("questionId") Integer questionId) {
+        answerService.addAnswer(answer, questionId);
     }
-
-    @RequestMapping(value = "/addAnswer", method = RequestMethod.POST)
-    public String addAnswer(@ModelAttribute("answer") Answer answer, @RequestParam("id") Integer id) {
-        answerService.addAnswer(answer, id);
-        return "redirect:/question?id=" + id;
-
-    }
-
-
 }

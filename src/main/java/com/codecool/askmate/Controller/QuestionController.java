@@ -22,13 +22,11 @@ public class QuestionController {
     }
 
     @PostMapping(value = "/add-question")
-    public String saveQuestion(@RequestBody Question question) {
+    public void saveQuestion(@RequestBody Question question) {
         questionService.addQuestion(question);
-        return "redirect:/";
     }
 
-//    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping("/questions")
+    @GetMapping("/")
     public List<AuditionModel> showAllQuestion() {
         return questionService.getAllQuestions();
     }
@@ -44,20 +42,17 @@ public class QuestionController {
     }
 
     @GetMapping("/deleteQuestion")
-    public String deleteQuestion(@RequestParam int id) {
+    public void deleteQuestion(@RequestParam int id) {
         questionService.deleteQuestionById(id);
-        return "redirect:/";
     }
 
-//    @GetMapping("/editQuestion")
-//    public String editQuestion(@RequestParam("id") Integer id) {
-//        questionService.getQuestionByID(id);
-//        return "redirect:/question?id=" + id;
-//    }
+    @GetMapping("/editQuestion")
+    public void editQuestion(@RequestParam("id") Integer id) {
+        questionService.getQuestionByID(id);
+    }
 
     @PutMapping("/editQuestion")
     public String editQuestionPut(@PathVariable Integer id, @RequestBody Question question) {
         questionService.editQuestion(id, question);
-        return "redirect:/question?id=" + id;
     }
 }
