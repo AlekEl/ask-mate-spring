@@ -7,10 +7,12 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-@CrossOrigin(origins="http://localhost:4200")
+//@RepositoryRestResource
+//@CrossOrigin(origins="http://localhost:4200")
 @Repository
 @Primary
 public interface DBPostgres extends JpaRepository<AuditionModel,Integer> {

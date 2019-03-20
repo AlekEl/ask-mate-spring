@@ -10,8 +10,8 @@
         <input id="shortDescription" placeholder="Short Description" [(ngModel)]="question.shortDescription"
                required name="shortDescription" #shortDescription><br>
         <label for="content"><h3>Question:</h3></label><br>
-        <textarea id="content" [(ngModel)]="question.content" placeholder="Content"
-                  required name="content" rows="7" #content
+        <textarea id="content" [(ngModel)]="question.description" placeholder="Description"
+                  required name="description" rows="7" #description
                   cols="40"></textarea><br>
         <button class="btn btn-outline-light" type="submit"
                 value="Submit" [disabled]="!questionForm.form.valid">Save</button>

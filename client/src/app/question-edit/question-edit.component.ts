@@ -28,7 +28,7 @@ export class QuestionEditComponent implements OnInit, OnDestroy {
         this.questionService.get(id).subscribe((question: any) => {
           if (question) {
             this.question = question;
-            this.question.href = question._links.self.href;
+            // this.question.href = question._links.self.href;
           } else {
             console.log(`Question with id '${id}' not found, returning to list`);
             this.gotoList();
