@@ -13,7 +13,7 @@
   <tbody>
   <tr align="center" *ngFor="let question of questions" class="d-flex">
     <td class="col-lg-9">{{question.shortDescription}}</td>
-    <td class="col-1"><a href="#">view</a></td>
+    <td class="col-1"><a [routerLink]="['/question-view', question.qid]">view</a></td>
     <td class="col-1">
       <a class="btn btn-secondary" [routerLink]="['/question-edit', question.qid]">Edit</a>
       <!--<form>-->

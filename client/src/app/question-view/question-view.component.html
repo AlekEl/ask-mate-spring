@@ -1,0 +1,35 @@
+<h1 style="font-size: 40px" class="font-weight-lighter">{{question.shortDescription}}</h1>
+<div class="container-fluid" style="background:white; max-width: 1300px; padding: 0; margin-top: 20px">
+  <table style="opacity: inherit; margin: 0 auto" class="table table-striped">
+    <thead class="table-dark">
+    <tr align="center" class="d-flex">
+      <td class="col-lg-8">Questions</td>
+      <td class="col-lg-1">Details</td>
+      <td class="col-lg-3">Date</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center" class="d-flex">
+      <td class="col-lg-8">{{question.description}}</td>
+      <td class="col-lg-1">{{question.author}}</td>
+      <td class="col-lg-3">{{question.date}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <table style="opacity: inherit; margin: 0 auto" class="table table-striped">
+    <thead class="table-dark">
+    <tr align="center" class="d-flex">
+      <td class="col-lg-8">Answers</td>
+      <td class="col-lg-1">Details</td>
+      <td class="col-lg-3">Date</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center" class="d-flex" *ngFor="let answer of question.answers">
+      <td class="col-lg-6">{{answer.text}}</td>
+      <td class="col-lg-1">{{answer.author}}</td>
+      <td class="col-lg-3">{{answer.date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

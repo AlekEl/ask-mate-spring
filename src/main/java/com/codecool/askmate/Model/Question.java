@@ -23,7 +23,7 @@ public class Question extends AuditionModel{
 //        return id;
 //    }
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "question",cascade = CascadeType.REMOVE)
     private List<Answer> answers;
 
