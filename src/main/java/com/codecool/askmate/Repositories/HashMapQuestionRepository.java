@@ -19,7 +19,7 @@
 //    @Override
 //    public void addQuestion(Question question) {
 //        Integer id = generateId();
-//        question.setId(id);
+//        question.setQid(id);
 //        questions.put(id, question);
 //    }
 //

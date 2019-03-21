@@ -25,10 +25,7 @@ export class QuestionService {
       result = this.http.put(question['href'], question);
     } else {
       result = this.http.post(this.QUESTION_API, question);
-      console.log(question['href']);
     }
-    console.log("LOOOK!")
-    console.log(question);
     return result;
   }
 

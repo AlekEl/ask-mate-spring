@@ -1,9 +1,14 @@
 package com.codecool.askmate.Controller;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+
 import com.codecool.askmate.Model.AuditionModel;
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,13 +17,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class QuestionController {
 
-//    private AnswerService answerService;
     private QuestionService questionService;
 
     @Autowired
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
-//        this.answerService = answerService;
     }
 
     @PostMapping(value = "/questions")
@@ -37,12 +40,14 @@ public class QuestionController {
     }
 
     @GetMapping("/questions/{id}")
-    public Question questionDetails(@PathVariable("id") Integer id) {
-        return questionService.getQuestionByID(id);
+    public HttpEntity<Question> questionDetails(@PathVariable("id") Integer id) {
+        Question question = questionService.getQuestionByID(id);
+        question.add(linkTo(methodOn(QuestionController.class).questionDetails(id)).withSelfRel());
+        return new ResponseEntity<>(question, HttpStatus.OK);
     }
 
-    @GetMapping("/deleteQuestion")
-    public void deleteQuestion(@RequestParam int id) {
+    @DeleteMapping("/questions/{id}")
+    public void deleteQuestion(@PathVariable("id") Integer id) {
         questionService.deleteQuestionById(id);
     }
 
@@ -51,7 +56,6 @@ public class QuestionController {
         questionService.getQuestionByID(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping("/questions/{id}")
     public void editQuestionPut(@PathVariable Integer id, @RequestBody Question question) {
         questionService.editQuestion(id, question);

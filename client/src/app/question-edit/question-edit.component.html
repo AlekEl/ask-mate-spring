@@ -1,6 +1,6 @@
 <form #questionForm='ngForm' (ngSubmit)="save(questionForm.value)">
   <div class="add" align="center">
-    <h1>{{question.author ? 'Edit' : 'Add'}} Question</h1>
+    <h1>{{question.shortDescription ? 'Edit' : 'Add'}} Question</h1>
   </div>
   <div class="border border-secondary">
     <input type="hidden" name="href" [(ngModel)]="question.href">

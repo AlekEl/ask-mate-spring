@@ -4,6 +4,7 @@ import com.codecool.askmate.Model.AuditionModel;
 import com.codecool.askmate.Model.Question;
 import com.codecool.askmate.Repositories.DBPostgres;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@RepositoryRestResource
 public class QuestionService {
 
     private DBPostgres postgresDb;

@@ -14,13 +14,11 @@ public class Answer extends AuditionModel{
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "question_id",referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "question_id",referencedColumnName = "qid", insertable = false, updatable = false)
     private Question question;
 
 
-    public Answer() {
-        this.date = new Date();
-    }
+
 
 
     public Answer(String text, String author, Integer id, Integer question_id) {
@@ -29,6 +27,10 @@ public class Answer extends AuditionModel{
         this.author = author;
         this.date = new Date();
         this.question_id = question_id;
+    }
+
+    public Answer(Integer id) {
+        super(id);
     }
 
     public String getText() {
@@ -55,7 +57,7 @@ public class Answer extends AuditionModel{
         this.author = author;
     }
 
-//    public void setId(Integer id) {
+//    public void setQid(Integer id) {
 //        this.id = id;
 //    }
 

@@ -1,17 +1,27 @@
 package com.codecool.askmate.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
 @Table(name = "question")
 public class Question extends AuditionModel{
+
     private String description;
     private String author;
     private String shortDescription;
+
+
+//    @Override
+//    public Integer getId() {
+//        return id;
+//    }
 
     @JsonIgnore
     @OneToMany(mappedBy = "question",cascade = CascadeType.REMOVE)
@@ -19,30 +29,34 @@ public class Question extends AuditionModel{
 
     private Date date;
 
+    public Question() {
+        super();
+    }
+
     public Date getDate() {
         return date;
     }
 
-    public Question() {
-        super();
-        this.date = new Date();
-    }
+//    public Question() {
+//        super();
+//        this.date = new Date();
+//    }
 
 
-    public Question(String description, String author, String shortDescription, int id) {
-        super(id);
-        this.description = description;
-        this.author = author;
-        this.shortDescription = shortDescription;
-        this.date = new Date();
-    }
-
-    public Question(String description, String author, String shortDescription) {
-        this.description = description;
-        this.author = author;
-        this.shortDescription = shortDescription;
-        this.date = new Date();
-    }
+//    public Question(String description, String author, String shortDescription, int id) {
+//        super(id);
+//        this.description = description;
+//        this.author = author;
+//        this.shortDescription = shortDescription;
+//        this.date = new Date();
+//    }
+//
+//    public Question(String description, String author, String shortDescription) {
+//        this.description = description;
+//        this.author = author;
+//        this.shortDescription = shortDescription;
+//        this.date = new Date();
+//    }
 
     public String getDescription() {
         return description;
@@ -72,7 +86,7 @@ public class Question extends AuditionModel{
 //        return question_id;
 //    }
 //
-//    public void setId(int id) {
+//    public void setQid(int id) {
 //        this.question_id = id;
 //    }
 

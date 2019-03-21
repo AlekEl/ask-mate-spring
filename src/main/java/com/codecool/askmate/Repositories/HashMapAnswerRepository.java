@@ -22,7 +22,7 @@
 //    @Override
 //    public void addAnswer(Answer answer, Integer questionID) {
 //        Integer id = generateId();
-//        answer.setId(id);
+//        answer.setQid(id);
 //        answer.setQuestionId(questionID);
 //        answers.put(id, answer);
 //    }

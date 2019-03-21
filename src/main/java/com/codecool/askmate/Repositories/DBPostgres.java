@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-//@RepositoryRestResource
+@RepositoryRestResource
 //@CrossOrigin(origins="http://localhost:4200")
 @Repository
 @Primary
