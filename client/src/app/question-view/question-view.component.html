@@ -29,7 +29,16 @@
       <td class="col-lg-6">{{answer.text}}</td>
       <td class="col-lg-1">{{answer.author}}</td>
       <td class="col-lg-3">{{answer.date}}</td>
+      <td class="col-lg-1">
+        <button class="btn btn-danger" type="button">Delete</button>
+      </td>
+      <td class="col-lg-1">
+        <a class="btn btn-secondary" href="#">Edit</a>
+      </td>
     </tr>
     </tbody>
   </table>
 </div>
+<button>Add Answer</button>
+<br>
+<a [routerLink]="['/question-list']">Back</a>

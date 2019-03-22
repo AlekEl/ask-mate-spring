@@ -86,7 +86,7 @@ public class Question extends AuditionModel{
 //        return question_id;
 //    }
 //
-//    public void setQid(int id) {
+//    public void setId(int id) {
 //        this.question_id = id;
 //    }
 
